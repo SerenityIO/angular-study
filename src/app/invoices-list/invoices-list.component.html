@@ -1,0 +1,26 @@
+<div class="row justify-content-md-center">
+  <div class="col-lg-10">
+    <h1>Invoice List:</h1>
+    <input class="form-control mr-sm-2" type="search" [(ngModel)]="search" (ngModelChange)="handleFilter()" placeholder="Search" aria-label="Search">
+    <br>
+    <p>
+      <button class="btn btn-success" (click)="onCreate()">create</button>
+    </p>
+    <div class="container">
+      <ul *ngFor="let invoice of filterInvoices" class="list-group">
+        <li [class.active]="invoice.completed" class="list-group-item">
+          <div class="col-xs-6 content">
+            {{invoice.name}}
+            <input disabled type="checkbox" [checked]="invoice.completed">
+            <p>{{invoice.description}}</p>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-success" (click)="onEdit(invoice)">edit</button>
+            <button class="btn btn-danger" (click)="onDelete(invoice)">delete</button>
+            <button class="btn btn-warning" (click)="onDublicate(invoice)">dublicate</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

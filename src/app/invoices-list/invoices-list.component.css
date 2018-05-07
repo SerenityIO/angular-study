@@ -1,0 +1,22 @@
+.done {
+    text-decoration: line-through;
+}
+.list-group-item {
+    position: relative;
+    margin-top: 10px;
+}
+.container {
+    height: 70vh;
+    overflow: auto;
+}
+.list-group {
+    position: relative;
+}
+.buttons {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+}
+.content {
+    width: 80%;
+}
