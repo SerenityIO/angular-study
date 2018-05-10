@@ -10,10 +10,12 @@ import { Invoice } from '../shared/invoice.model';
 })
 export class InvoiceEditorComponent implements OnInit {
   invoice: Invoice;
+  error: Boolean;
 
   constructor(private service: InvoiceService, private currentRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.error = false;
     const id: number = +this.currentRoute.snapshot.paramMap.get('id');
     if (id) {
       this.invoice = this.service.getById(id);
@@ -27,6 +29,10 @@ export class InvoiceEditorComponent implements OnInit {
   }
 
   onSave() {
+    if (!this.invoice.name) {
+      this.error = true;
+      return;
+    }
     if (this.invoice.id) {
       this.service.update(this.invoice);
     } else {

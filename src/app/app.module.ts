@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoicesListComponent } from './invoices-list/invoices-list.component';
-import { SettingsComponent } from './settings/settings.component';
 import { InvoiceService } from './shared/invoice.service';
 import { InvoiceEditorComponent } from './invoice-editor/invoice-editor.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -15,7 +14,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
   declarations: [
     AppComponent,
     InvoicesListComponent,
-    SettingsComponent,
     InvoiceEditorComponent,
     LoginPageComponent
   ],

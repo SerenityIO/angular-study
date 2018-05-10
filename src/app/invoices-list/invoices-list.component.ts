@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { InvoiceService } from '../shared/invoice.service';
 import { Invoice } from '../shared/invoice.model';
+import { Timeouts } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-invoices-list',
@@ -16,6 +17,7 @@ export class InvoicesListComponent implements OnInit {
   search: string;
 
   constructor(private service: InvoiceService, private router: Router) { }
+  debounce = null;
 
   ngOnInit() {
     this.refresh();
@@ -27,20 +29,26 @@ export class InvoicesListComponent implements OnInit {
     this.search = '';
   }
   handleFilter() {
-    this.filterInvoices =  this.invoices.filter(i => {
-      if (~i.description.indexOf(this.search)) {
-        return true;
-      }
-      if (~i.name.indexOf(this.search)) {
-        return true;
-      }
-      return false;
-    });
+    clearTimeout(this.debounce);
+    this.debounce = setTimeout(() => {
+      this.search = this.search.toLowerCase();
+      this.filterInvoices =  this.invoices.filter(i => {
+        if (~i.description.toLowerCase().indexOf(this.search) || ~i.name.toLowerCase().indexOf(this.search)) {
+          return true;
+        }
+        return false;
+      });
+    }, 300);
   }
 
   onCreate() {
     this.router.navigate(['invoices', 'create']);
   }
+
+  clearSearch() {
+    this.refresh();
+  }
+
   onDublicate(invoice: Invoice) {
     this.service.dublicate(invoice.id);
     this.refresh();

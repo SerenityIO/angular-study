@@ -6,7 +6,7 @@
     margin-top: 10px;
 }
 .container {
-    height: 70vh;
+    height: 80vh;
     overflow: auto;
 }
 .list-group {
@@ -18,5 +18,5 @@
     top: 35%;
 }
 .content {
-    width: 80%;
+    width: 70%;
 }

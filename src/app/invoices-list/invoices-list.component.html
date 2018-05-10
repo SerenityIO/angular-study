@@ -1,7 +1,14 @@
 <div class="row justify-content-md-center">
   <div class="col-lg-10">
     <h1>Invoice List:</h1>
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="search" (ngModelChange)="handleFilter()" placeholder="Search" aria-label="Search">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="search" (ngModelChange)="handleFilter()" placeholder="Search" aria-label="Search">
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <button class="btn btn-success" (click)="clearSearch()">clear search</button>        
+      </div>
+    </div>
     <br>
     <p>
       <button class="btn btn-success" (click)="onCreate()">create</button>
